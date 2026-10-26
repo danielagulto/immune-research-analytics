@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Immune Research Analytics</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">◎</span><div><b>BioInsight</b><small>RESEARCH SUITE</small></div></div>
+    <div class="nav-label">WORKSPACE</div>
+    <a class="nav active" href="/">▦ &nbsp; Overview</a>
+    <a class="nav" href="#samples">◫ &nbsp; Sample explorer</a>
+    <div class="sidebar-note"><span class="dot"></span> Demo environment <small>All records are synthetic</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><div class="eyebrow">RESEARCH / OVERVIEW</div><h1>Immune Research Analytics</h1><p>Explore synthetic immune-cell measurements and cohort-level patterns.</p></div><div class="avatar">BR</div></header>
+    <div class="notice">ⓘ Portfolio demonstration only — synthetic data, not a medical or diagnostic tool.</div>
+    <section class="metrics">
+      <article class="metric"><div class="metric-label">Total samples</div><div id="total" class="metric-value">—</div><div class="metric-foot">Records in demo dataset</div></article>
+      <article class="metric"><div class="metric-label">Avg. CD4 count</div><div id="cd4" class="metric-value">—</div><div class="metric-foot">Cells/µL · simulated</div></article>
+      <article class="metric"><div class="metric-label">Avg. CD8 count</div><div id="cd8" class="metric-value">—</div><div class="metric-foot">Cells/µL · simulated</div></article>
+      <article class="metric"><div class="metric-label">Avg. inflammation score</div><div id="inflam" class="metric-value">—</div><div class="metric-foot">Illustrative 0–10 scale</div></article>
+    </section>
+    <section class="charts">
+      <article class="panel"><div class="panel-head"><div><h2>Response group distribution</h2><p>Sample counts by observed demo category</p></div><span class="tag">COHORTS</span></div><div class="chart-wrap"><canvas id="responseChart"></canvas></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Samples by cohort</h2><p>Distribution across study groups</p></div><span class="tag">OVERVIEW</span></div><div class="chart-wrap"><canvas id="cohortChart"></canvas></div></article>
+    </section>
+    <section class="panel table-panel" id="samples">
+      <div class="panel-head"><div><h2>Sample explorer</h2><p>Search and filter the sample records stored in SQLite.</p></div><button id="exportBtn" class="button secondary">Export CSV</button></div>
+      <div class="filters"><input id="search" placeholder="Search sample ID…"><select id="cohort"><option value="">All cohorts</option><option>Cohort A</option><option>Cohort B</option><option>Cohort C</option></select><select id="response"><option value="">All response groups</option><option>Responder</option><option>Partial response</option><option>Non-responder</option></select></div>
+      <div class="table-scroll"><table><thead><tr><th>Sample ID</th><th>Cohort</th><th>Collected</th><th>CD4</th><th>CD8</th><th>B cells %</th><th>Inflammation</th><th>Response</th></tr></thead><tbody id="sampleRows"><tr><td colspan="8">Loading records…</td></tr></tbody></table></div>
+      <div id="tableFoot" class="table-foot"></div>
+    </section>
+    <footer>BioInsight · Built with FastAPI, SQLite, HTML, CSS and JavaScript · Synthetic data</footer>
+  </main>
+</div>
+<script src="/static/app.js"></script>
+</body></html>
